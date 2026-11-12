@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background-color: #21143d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ФОНОВАЯ КАРТИНКА */
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: -2;
+        }
+
+        /* ЗАТЕМНЕНИЕ ФОНА */
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 12, 45, 0.4);
+            z-index: -1;
+        }
+
+        /* КАРТОЧКА */
+
+        .container {
+            position: relative;
+            z-index: 1;
+
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(15px);
+
+            width: 100%;
+            max-width: 480px;
+
+            padding: 35px;
+            border-radius: 22px;
+
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #39235f;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #76698c;
+            margin-bottom: 28px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #39235f;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #d4c9e5;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #9470c9;
+            box-shadow: 0 0 8px rgba(148, 112, 201, 0.3);
+        }
+
+        .hint {
+            display: block;
+            margin-top: 6px;
+            color: #827691;
+            font-size: 11px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #7651ad, #a47bd1);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 18px rgba(118, 81, 173, 0.35);
+        }
+
+        .footer {
+            text-align: center;
+            color: #827691;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        max-width: 500px {
+            .container {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ФОНОВАЯ КАРТИНКА -->
+    <img class="background" src="images/background.jpg" alt="Фоновое изображение">
+
+    <!-- ЗАТЕМНЕНИЕ -->
+    <div class="overlay"></div>
+
+    <!-- ФОРМА РЕГИСТРАЦИИ -->
+    <div class="container">
+
+        <h1>Создай аккаунт ✨</h1>
+
+        <p class="subtitle">
+            Присоединяйся к нашему онлайн-клубу!
+        </p>
+
+        <form onsubmit="event.preventDefault(); alert('Регистрация прошла успешно! 🎉');">
+
+            <div class="form-group">
+                <label for="fullname
+ФИО</label>
+                <input
+                    type="text"
+                    id="fullname"
+                    name="fullname"
+                    placeholder="Например, Иван Иванов"
+                    pattern="[A-Za-zА-Яа-яЁё]+( [A-Za-zА-Яа-яЁё]+)*"
+                    title="Только русские или английские буквы и пробелы"
+                    required
+                >
+                <span class="hint">Только кириллица или латиница, без цифр и символов</span>
+            </div>
+            <div class="form-group">
+                <label for="fullname">ФИО</label>
+            
+                <input
+                    type="text"
+                    id="fullname"
+                    name="fullname"
+                    placeholder="Например, Иван Иванов"
+                    pattern="[A-Za-zА-Яа-яЁё]+( [A-Za-zА-Яа-яЁё]+)*"
+                    title="Используйте только русские или английские буквы и пробелы"
+                    required
+                >
+            
+                <span class="hint">
+                    Только кириллица или латиница, без цифр и символов
+                </span>
+            </div>
+            
+            <div class="form-group">
+                <label for="login">Логин</label>
+                <input
+                    type="text"
+                    id="login"
+                    name="login"
+                    placeholder="Придумайте логин"
+                    pattern="(?=.*[a-z])(?=.*[A-Z])(?=(?:.*[0-9]){3,})(?=.*[!@#$%^&amp;*()_+\-=\[\]{};':&quot;\\|,.<>/?]).{8,}"
+                    title="От 8 символов, строчные и заглавные латинские буквы, 3 цифры и спецсимвол"
+                    required
+                >
+                <span class="hint">
+                    От 8 символов, заглавные и строчные буквы, 3 цифры и спецсимвол
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Электронная почта</label>
+                <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="example@mail.com"
+                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+                    title="Введите корректный email латинскими буквами"
+                    required
+                >
+                <span class="hint">Формат: имя почты @ домен</span>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Возраст</label>
+                <input
+                    type="text"
+                    id="age"
+                    name="age"
+                    placeholder="Введите возраст"
+                    pattern="(1[89]|[2-9][0-9])"
+                    title="Возраст от 18 до 99 лет"
+                    required
+                >
+                <span class="hint">Возраст от 18 до 99 лет</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Придумайте пароль"
+                    pattern="(?=.*[а-яё])(?=.*[А-ЯЁ])(?=(?:.*[0-9]){3,})(?=.*[!@#$%^&amp;*])[А-Яа-яЁё0-9!@#$%^&amp;*]{15,}"
+                    title="От 15 символов, строчные и заглавные русские буквы, 3 цифры и спецсимвол"
+                    required
+                >
+                <span class="hint">От 15 символов: строчные и заглавные русские буквы, 3 цифры и спецсимвол</span>
+            </div>
+
+            <button type="submit">Зарегистрироваться</button>
+
+        </form>
+
+        <p class="footer">
+            Создавай свой аккаунт и открывай новые возможности 💜
+        </p>
+
+    </div>
+
+</body>
+</html>">
